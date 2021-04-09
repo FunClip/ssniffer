@@ -18,7 +18,23 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
+INCLUDEPATH += $$PWD/pcap/Include
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+unix:!macx|win32: LIBS += -L$$PWD/pcap/Lib/x64/ -lwpcap
+
+INCLUDEPATH += $$PWD/pcap/Lib/x64
+DEPENDPATH += $$PWD/pcap/Lib/x64
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/pcap/Lib/x64/wpcap.lib
+
+unix:!macx|win32: LIBS += -L$$PWD/pcap/Lib/x64/ -lPacket
+
+INCLUDEPATH += $$PWD/pcap/Lib/x64
+DEPENDPATH += $$PWD/pcap/Lib/x64
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/pcap/Lib/x64/Packet.lib
