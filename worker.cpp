@@ -17,7 +17,7 @@ void Worker::startWork()
 
         if(res == 0)
             continue;
-        emit onPacketReceived(pkt_data);
+        emit onPacketReceived(header, pkt_data);
     }
     if(res == -1)
     {

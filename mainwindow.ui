@@ -110,22 +110,37 @@
         </column>
         <column>
          <property name="text">
+          <string>源IP</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
           <string>目的IP</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>新建列</string>
+          <string>网络层协议</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>协议</string>
+          <string>传输层协议</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>应用层协议</string>
          </property>
         </column>
         <column>
          <property name="text">
           <string>长度</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>data</string>
          </property>
         </column>
        </widget>

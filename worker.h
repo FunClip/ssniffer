@@ -14,7 +14,7 @@ public slots:
     void startWork();
 signals:
     void onStart(pcap_t *);
-    void onPacketReceived(const u_char *);
+    void onPacketReceived(pcap_pkthdr *,const u_char *);
     void onFinished();
 
 private:

@@ -86,7 +86,7 @@ int Npcap::SetInterface(QString if_des)
 {
     auto p = this->interfaces;
     while(p) {
-        if(QString(p->name).contains(if_des, Qt::CaseInsensitive)) {
+        if(QString(p->name).contains(this->ifs[if_des], Qt::CaseInsensitive)) {
             this->current_if = p;
             qDebug("Choose interface: %s\n", p->name);
             return 0;
@@ -142,7 +142,7 @@ pcap_t *Npcap::SetPcapFilter(QString filter)
     //编译过滤器 char packet_filter[] = "host 192.168.204.128";
     if (pcap_compile(adhandle, &fcode, filter.toStdString().c_str(), 1, netmask) <0 )
     {
-        qDebug("\nUnable to compile the packet filter. Check the syntax.\n");
+        qDebug("\nUnable to compile the packet filter. Check the syntax.\n%s\n",filter.toStdString().c_str());
         /* 释放设备列表 */
         pcap_freealldevs(current_if);
         return NULL;

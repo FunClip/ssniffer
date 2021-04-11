@@ -12,12 +12,15 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     npcap.cpp \
+    parser.cpp \
     util.cpp \
     worker.cpp
 
 HEADERS += \
+    header.h \
     mainwindow.h \
     npcap.h \
+    parser.h \
     util.h \
     worker.h
 
@@ -37,3 +40,5 @@ INCLUDEPATH += $$PWD/pcap/Lib/x64
 DEPENDPATH += $$PWD/pcap/Lib/x64
 
 win32: LIBS += -L$$PWD/pcap/Lib/x64/ -lwpcap
+
+LIBS += -lws2_32
