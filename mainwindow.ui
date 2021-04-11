@@ -100,11 +100,6 @@
        <widget class="QTableWidget" name="tableWidget">
         <column>
          <property name="text">
-          <string>序号</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
           <string>时间</string>
          </property>
         </column>
