@@ -10,10 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    npcap.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    npcap.h
 
 FORMS += \
     mainwindow.ui
@@ -25,16 +27,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-unix:!macx|win32: LIBS += -L$$PWD/pcap/Lib/x64/ -lwpcap
+win32: LIBS += -L$$PWD/pcap/Lib/x64/ -lPacket
 
 INCLUDEPATH += $$PWD/pcap/Lib/x64
 DEPENDPATH += $$PWD/pcap/Lib/x64
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/pcap/Lib/x64/wpcap.lib
-
-unix:!macx|win32: LIBS += -L$$PWD/pcap/Lib/x64/ -lPacket
-
-INCLUDEPATH += $$PWD/pcap/Lib/x64
-DEPENDPATH += $$PWD/pcap/Lib/x64
-
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/pcap/Lib/x64/Packet.lib
+win32: LIBS += -L$$PWD/pcap/Lib/x64/ -lwpcap
