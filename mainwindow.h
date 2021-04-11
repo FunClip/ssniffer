@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QThread>
+
+#include "worker.h"
+#include "npcap.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +21,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Worker *worker;
+    QThread *captor;
+    Npcap npcap;
 };
 #endif // MAINWINDOW_H

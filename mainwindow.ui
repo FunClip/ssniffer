@@ -49,6 +49,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+        </property>
        </widget>
       </item>
      </layout>
@@ -94,7 +97,38 @@
     <item row="2" column="0" colspan="5">
      <layout class="QGridLayout" name="gridLayout_8">
       <item row="0" column="0">
-       <widget class="QTableWidget" name="tableWidget"/>
+       <widget class="QTableWidget" name="tableWidget">
+        <column>
+         <property name="text">
+          <string>序号</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>时间</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>目的IP</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>新建列</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>协议</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>长度</string>
+         </property>
+        </column>
+       </widget>
       </item>
      </layout>
     </item>
