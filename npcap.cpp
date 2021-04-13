@@ -17,7 +17,7 @@ Npcap::Npcap()
 Npcap::~Npcap()
 {
     if(this->current_if)
-        pcap_freealldevs(this->current_if);
+        pcap_freealldevs(this->interfaces);
 }
 
 int Npcap::init()

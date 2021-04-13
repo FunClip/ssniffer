@@ -22,7 +22,11 @@ public:
     ~MainWindow();
 public slots:
     void CaptorStart();
-    void SetTable(pcap_pkthdr *,const u_char *);
+    void SetTable(pcap_pkthdr *, u_char *);
+    void SetDetail(int, int);
+    void CaptorFinished();
+    void CaptorStop();
+    void Reset();
 private:
     Ui::MainWindow *ui;
     Worker *worker;

@@ -10,11 +10,12 @@ class Worker : public QObject
 public:
     explicit Worker(QObject *parent = nullptr);
     void setadhandle(pcap_t *con_adhandle){ adhandle = con_adhandle; }
+    bool isRunning;
 public slots:
     void startWork();
 signals:
     void onStart(pcap_t *);
-    void onPacketReceived(pcap_pkthdr *,const u_char *);
+    void onPacketReceived(pcap_pkthdr *, u_char *);
     void onFinished();
 
 private:

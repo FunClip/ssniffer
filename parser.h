@@ -26,15 +26,16 @@ public:
     QString t_ptl;
     QString a_ptl;
     QString len;
-    const u_char* data;
+    QString data;
 };
 
 class Parser
 {
 public:
     Parser();
-    TableItem paserTableItem(pcap_pkthdr *,const u_char *);
-    int paserTreeItem(const u_char *);
+    TableItem paserTableItem(pcap_pkthdr *,u_char *);
+    QString paserDetailItem(QString data);
+    QString paserBytesDisplay(QString data);
 };
 
 #endif // PARSER_H
