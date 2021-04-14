@@ -117,8 +117,6 @@ pcap_t *Npcap::SetPcapFilter(QString filter)
     if (adhandle == NULL)
     {
         qDebug("\nUnable to open the adapter. %s is not supported by WinPcap\n",current_if->name);
-        /* 释放设备列表 */
-        pcap_freealldevs(current_if);
         return NULL;
     }
 
@@ -126,8 +124,7 @@ pcap_t *Npcap::SetPcapFilter(QString filter)
     if(pcap_datalink(adhandle) != DLT_EN10MB)
     {
         qDebug("\nThis program works only on Ethernet networks.\n");
-        /* 释放设备列表 */
-        pcap_freealldevs(current_if);
+        pcap_close(adhandle);
         return NULL;
     }
 
@@ -143,8 +140,7 @@ pcap_t *Npcap::SetPcapFilter(QString filter)
     if (pcap_compile(adhandle, &fcode, filter.toStdString().c_str(), 1, netmask) <0 )
     {
         qDebug("\nUnable to compile the packet filter. Check the syntax.\n%s\n",filter.toStdString().c_str());
-        /* 释放设备列表 */
-        pcap_freealldevs(current_if);
+        pcap_close(adhandle);
         return NULL;
     }
 
@@ -152,8 +148,7 @@ pcap_t *Npcap::SetPcapFilter(QString filter)
     if (pcap_setfilter(adhandle, &fcode)<0)
     {
         qDebug("\nError setting the filter.\n");
-        /* 释放设备列表 */
-        pcap_freealldevs(current_if);
+        pcap_close(adhandle);
         return NULL;
     }
 

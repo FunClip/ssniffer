@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QThread>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -61,16 +62,21 @@ void MainWindow::CaptorStart()
 
     pcap_t *adhandle = npcap.SetPcapFilter(filter);
 
-    worker->setadhandle(adhandle);
-    worker->isRunning = true;
+    if(adhandle == NULL) {
+        QMessageBox::information(this, tr("Error"), "过滤条件错误！", QMessageBox::Ok);
+    }
+    else {
+        worker->setadhandle(adhandle);
+        worker->isRunning = true;
 
-    ui->pushButton->setDisabled(true);
-    ui->comboBox->setDisabled(true);
-    ui->lineEdit->setDisabled(true);
-    ui->pushButton_2->setEnabled(true);
-    ui->pushButton_3->setDisabled(true);
+        ui->pushButton->setDisabled(true);
+        ui->comboBox->setDisabled(true);
+        ui->lineEdit->setDisabled(true);
+        ui->pushButton_2->setEnabled(true);
+        ui->pushButton_3->setDisabled(true);
 
-    captor->start();
+        captor->start();
+    }
 }
 
 void MainWindow::SetTable(pcap_pkthdr *header, u_char *pktdata)
